@@ -1,0 +1,318 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--color-background-primary);}
+
+.notion{
+  font-family:-apple-system,'Segoe UI',sans-serif;
+  max-width:900px;
+  padding:2rem 2.5rem 4rem;
+  color:var(--color-text-primary);
+  font-size:14px;
+  line-height:1.6;
+}
+
+.n-cover{height:60px;background:linear-gradient(135deg,#1D9E75 0%,#534AB7 100%);border-radius:0;margin:-2rem -2.5rem 0;margin-bottom:1.5rem;}
+
+.n-icon{font-size:48px;margin-bottom:.25rem;}
+.n-title{font-size:32px;font-weight:700;color:var(--color-text-primary);margin-bottom:.15rem;line-height:1.2;}
+.n-prop-row{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:13px;}
+.n-prop-label{color:var(--color-text-secondary);width:130px;flex-shrink:0;}
+.n-prop-val{color:var(--color-text-primary);}
+.n-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:500;}
+.t-green{background:#D3F0E3;color:#1A6B4A;}
+.t-purple{background:#E8E7FD;color:#3C3489;}
+.t-amber{background:#FDF0D8;color:#6B3F06;}
+.t-gray{background:#EBEBEA;color:#37352F;}
+.t-blue{background:#D9EDF8;color:#0B4F75;}
+
+.n-divider{height:1px;background:var(--color-border-tertiary);margin:1rem 0;}
+
+.n-callout{display:flex;gap:10px;padding:12px 14px;border-radius:6px;margin:.5rem 0;font-size:13.5px;line-height:1.5;}
+.callout-amber{background:#FFF8ED;border:1px solid #EEC97A;}
+.callout-gray{background:var(--color-background-secondary);border:1px solid var(--color-border-tertiary);}
+.callout-blue{background:#EEF4FD;border:1px solid #9DC4F0;}
+.callout-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+
+.n-h2{font-size:19px;font-weight:700;color:var(--color-text-primary);margin:1.5rem 0 .5rem;padding-top:.5rem;border-top:1px solid var(--color-border-tertiary);}
+.n-h3{font-size:15px;font-weight:600;color:var(--color-text-primary);margin:1rem 0 .4rem;}
+
+.n-cols{display:grid;gap:12px;margin:.5rem 0;}
+.n-cols-4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.n-cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.n-cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+
+.stat-card{background:var(--color-background-secondary);border-radius:8px;padding:12px 14px;}
+.stat-label{font-size:11px;color:var(--color-text-secondary);margin-bottom:4px;}
+.stat-val{font-size:24px;font-weight:700;color:var(--color-text-primary);line-height:1;}
+.stat-sub{font-size:11px;color:var(--color-text-secondary);margin-top:3px;}
+
+.link-card{display:flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid var(--color-border-tertiary);border-radius:6px;font-size:13px;color:var(--color-text-secondary);background:var(--color-background-primary);cursor:pointer;text-decoration:none;}
+.link-card:hover{background:var(--color-background-secondary);}
+.link-card i{font-size:15px;}
+
+.info-card{background:var(--color-background-primary);border:1px solid var(--color-border-tertiary);border-radius:8px;padding:0;overflow:hidden;}
+.ic-header{padding:9px 12px;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:space-between;}
+.ic-header i{font-size:14px;margin-right:5px;color:inherit;}
+.ic-row{display:flex;justify-content:space-between;align-items:center;padding:7px 12px;border-top:1px solid var(--color-border-tertiary);font-size:12.5px;}
+.ic-row:nth-child(even){background:var(--color-background-secondary);}
+.ic-label{color:var(--color-text-secondary);}
+.ic-val{font-weight:500;}
+.ic-val.ok{color:#1D9E75;}
+.ic-val.warn{color:#BA7517;}
+.ic-val.na{color:var(--color-text-secondary);}
+
+.n-table{width:100%;border-collapse:collapse;font-size:13px;margin:.5rem 0;}
+.n-table th{text-align:left;padding:7px 10px;background:var(--color-background-secondary);border-bottom:1px solid var(--color-border-tertiary);font-weight:600;color:var(--color-text-secondary);font-size:12px;}
+.n-table td{padding:7px 10px;border-bottom:1px solid var(--color-border-tertiary);}
+.n-table tr:last-child td{border-bottom:none;}
+.n-table tr:nth-child(even) td{background:var(--color-background-secondary);}
+
+.check-item{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid var(--color-border-tertiary);}
+.check-item:last-child{border-bottom:none;}
+.checkbox{width:15px;height:15px;border:1.5px solid var(--color-border-secondary);border-radius:3px;flex-shrink:0;margin-top:1px;}
+.checkbox.done{background:#1D9E75;border-color:#1D9E75;}
+.check-text{font-size:13px;flex:1;line-height:1.4;}
+.day-pill{font-size:10px;font-weight:600;padding:2px 7px;border-radius:12px;white-space:nowrap;margin-top:2px;display:inline-block;}
+
+.n-toggle{margin:.25rem 0;}
+.n-toggle-hdr{display:flex;align-items:center;gap:6px;padding:4px 0;cursor:pointer;font-size:13.5px;font-weight:500;color:var(--color-text-primary);}
+.n-toggle-hdr i{font-size:12px;color:var(--color-text-secondary);}
+.n-toggle-body{padding:4px 0 4px 22px;}
+
+.update-block{background:var(--color-background-secondary);border-radius:6px;padding:12px 14px;font-size:13px;line-height:1.8;}
+.update-block .ub-row{display:flex;gap:6px;}
+.update-block .ub-label{font-weight:600;color:var(--color-text-primary);min-width:130px;}
+.update-block .ub-val{color:var(--color-text-secondary);}
+
+.progress-bar{height:6px;background:var(--color-background-secondary);border-radius:3px;margin-top:4px;overflow:hidden;}
+.progress-fill{height:6px;border-radius:3px;}
+
+.page-meta{display:flex;flex-direction:column;gap:2px;margin-bottom:1.25rem;}
+</style>
+
+<div class="notion">
+
+  <div class="n-cover"></div>
+
+  <div class="n-icon">🧠</div>
+  <div class="n-title">Sabine's CEO Intelligence Dashboard</div>
+
+  <div class="page-meta" style="margin-top:.75rem;">
+    <div class="n-prop-row">
+      <span class="n-prop-label"><i class="ti ti-user" aria-hidden="true" style="font-size:13px;margin-right:4px;"></i>Maintained by</span>
+      <span class="n-prop-val"><span class="n-tag t-purple">Bon Fernandez</span></span>
+    </div>
+    <div class="n-prop-row">
+      <span class="n-prop-label"><i class="ti ti-calendar" aria-hidden="true" style="font-size:13px;margin-right:4px;"></i>Last updated</span>
+      <span class="n-prop-val">19 May 2026</span>
+    </div>
+    <div class="n-prop-row">
+      <span class="n-prop-label"><i class="ti ti-refresh" aria-hidden="true" style="font-size:13px;margin-right:4px;"></i>Update frequency</span>
+      <span class="n-prop-val">Every Monday morning</span>
+    </div>
+    <div class="n-prop-row">
+      <span class="n-prop-label"><i class="ti ti-flag" aria-hidden="true" style="font-size:13px;margin-right:4px;"></i>Status</span>
+      <span class="n-prop-val"><span class="n-tag t-green">On track</span></span>
+    </div>
+    <div class="n-prop-row">
+      <span class="n-prop-label"><i class="ti ti-target" aria-hidden="true" style="font-size:13px;margin-right:4px;"></i>Theme</span>
+      <span class="n-prop-val">Executive positioning · 5 posts + 1 article/week through end of June</span>
+    </div>
+  </div>
+
+  <div class="n-divider"></div>
+
+  <div class="n-callout callout-amber">
+    <span class="callout-icon">⚠️</span>
+    <div>
+      <strong>Action needed this week</strong><br>
+      Services article — publish Monday &nbsp;·&nbsp; 2 Beehive emails need Sabine review before Thursday &nbsp;·&nbsp; Georgina's 3 posts need approval &nbsp;·&nbsp; Airtable slots for next week are empty
+    </div>
+  </div>
+
+  <div class="n-h2">⚡ Morning snapshot</div>
+  <p style="font-size:13px;color:var(--color-text-secondary);margin-bottom:.75rem;">Bon updates every Monday. Sabine reads in 60 seconds.</p>
+
+  <div class="n-cols n-cols-4">
+    <div class="stat-card">
+      <div class="stat-label">LinkedIn impressions</div>
+      <div class="stat-val">—</div>
+      <div class="stat-sub">Bon adds Monday</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">New followers</div>
+      <div class="stat-val">—</div>
+      <div class="stat-sub">vs last week</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Beehive subscribers</div>
+      <div class="stat-val">—</div>
+      <div class="stat-sub">from Beehive dashboard</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Ad spend this week</div>
+      <div class="stat-val">$0</div>
+      <div class="stat-sub">budget: $40/week</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:0%;background:#1D9E75;"></div></div>
+    </div>
+  </div>
+
+  <div class="n-h2">🔗 Quick links</div>
+  <div class="n-cols n-cols-4" style="margin-bottom:.5rem;">
+    <a class="link-card"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn profile</a>
+    <a class="link-card"><i class="ti ti-database" aria-hidden="true"></i> Notion CRM</a>
+    <a class="link-card"><i class="ti ti-mail" aria-hidden="true"></i> Beehive</a>
+    <a class="link-card"><i class="ti ti-layout-columns" aria-hidden="true"></i> Airtable calendar</a>
+  </div>
+  <div class="n-cols n-cols-4">
+    <a class="link-card"><i class="ti ti-news" aria-hidden="true"></i> Substack</a>
+    <a class="link-card"><i class="ti ti-books" aria-hidden="true"></i> Resource hub</a>
+    <a class="link-card"><i class="ti ti-speakerphone" aria-hidden="true"></i> Speaking deck</a>
+    <a class="link-card"><i class="ti ti-chart-bar" aria-hidden="true"></i> Analytics</a>
+  </div>
+
+  <div class="n-h2">📱 Content + comms</div>
+  <div class="n-cols n-cols-3">
+    <div class="info-card">
+      <div class="ic-header" style="background:#E1F5EE;color:#085041;"><span><i class="ti ti-brand-linkedin" aria-hidden="true"></i>LinkedIn this week</span><span class="n-tag t-green" style="font-size:11px;">5 posts</span></div>
+      <div class="ic-row"><span class="ic-label">Posts scheduled</span><span class="ic-val warn">0 / 5</span></div>
+      <div class="ic-row"><span class="ic-label">Article published</span><span class="ic-val warn">Pending — Mon</span></div>
+      <div class="ic-row"><span class="ic-label">Georgina approved</span><span class="ic-val warn">Awaiting</span></div>
+      <div class="ic-row"><span class="ic-label">Boosts done</span><span class="ic-val na">0 / 2 posts</span></div>
+      <div class="ic-row"><span class="ic-label">Ad spend</span><span class="ic-val na">$0 / $40</span></div>
+    </div>
+    <div class="info-card">
+      <div class="ic-header" style="background:#FAEEDA;color:#633806;"><span><i class="ti ti-mail" aria-hidden="true"></i>Beehive / email</span><span class="n-tag t-amber" style="font-size:11px;">2/week</span></div>
+      <div class="ic-row"><span class="ic-label">Next send date</span><span class="ic-val warn">Check Beehive</span></div>
+      <div class="ic-row"><span class="ic-label">Loaded through</span><span class="ic-val ok">Jun 15</span></div>
+      <div class="ic-row"><span class="ic-label">Sabine review</span><span class="ic-val warn">Pending</span></div>
+      <div class="ic-row"><span class="ic-label">Last open rate</span><span class="ic-val na">—</span></div>
+      <div class="ic-row"><span class="ic-label">Subscribers</span><span class="ic-val na">—</span></div>
+    </div>
+    <div class="info-card">
+      <div class="ic-header" style="background:#F1EFE8;color:#444441;"><span><i class="ti ti-news" aria-hidden="true"></i>Substack</span><span class="n-tag t-gray" style="font-size:11px;">Launching</span></div>
+      <div class="ic-row"><span class="ic-label">Subscribers</span><span class="ic-val na">—</span></div>
+      <div class="ic-row"><span class="ic-label">Notes this week</span><span class="ic-val warn">0 / 3–5 target</span></div>
+      <div class="ic-row"><span class="ic-label">Restacks done</span><span class="ic-val na">—</span></div>
+      <div class="ic-row"><span class="ic-label">Monetisation</span><span class="ic-val warn">Not yet active</span></div>
+      <div class="ic-row"><span class="ic-label">Last post</span><span class="ic-val na">—</span></div>
+    </div>
+  </div>
+
+  <div class="n-h2">👥 Pipeline + growth</div>
+  <div class="n-cols n-cols-2">
+    <div class="info-card">
+      <div class="ic-header" style="background:#F1EFE8;color:#444441;"><span><i class="ti ti-users" aria-hidden="true"></i>CRM pipeline</span><span class="n-tag t-gray" style="font-size:11px;">Bon updates weekly</span></div>
+      <div class="ic-row"><span class="ic-label">Alex</span><span class="ic-val ok">Research done</span></div>
+      <div class="ic-row"><span class="ic-label">Add from CRM</span><span class="ic-val na">—</span></div>
+      <div class="ic-row"><span class="ic-label">Add from CRM</span><span class="ic-val na">—</span></div>
+      <div class="ic-row" style="font-size:11px;color:var(--color-text-secondary);">Research PDFs attached per contact in Notion CRM</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-header" style="background:#EEEDFE;color:#3C3489;"><span><i class="ti ti-speakerphone" aria-hidden="true"></i>Speaking / phase 2</span><span class="n-tag t-purple" style="font-size:11px;">In progress</span></div>
+      <div class="ic-row"><span class="ic-label">Deck structure</span><span class="ic-val warn">Today w/ coach</span></div>
+      <div class="ic-row"><span class="ic-label">Landing page</span><span class="ic-val warn">Georgina: this wknd</span></div>
+      <div class="ic-row"><span class="ic-label">Events pitched</span><span class="ic-val na">0</span></div>
+      <div class="ic-row"><span class="ic-label">Podcasts pitched</span><span class="ic-val na">0</span></div>
+      <div class="ic-row"><span class="ic-label">Topic</span><span class="ic-val na">Monetising expertise</span></div>
+    </div>
+  </div>
+
+  <div class="n-h2">✅ Bon's weekly checklist</div>
+  <div class="n-callout callout-gray">
+    <span class="callout-icon" style="font-size:14px;">💡</span>
+    <span style="font-size:13px;">Bon ticks these off each week. Sabine can see progress at a glance.</span>
+  </div>
+
+  <div class="n-h3">Monday</div>
+  <div style="border:1px solid var(--color-border-tertiary);border-radius:8px;padding:4px 12px;margin-bottom:.75rem;">
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Update morning snapshot (impressions, followers, subscribers)</div><span class="day-pill" style="background:#FAEEDA;color:#633806;">Mon</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Chase Georgina — 3 posts + article for the week</div><span class="day-pill" style="background:#FAEEDA;color:#633806;">Mon</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Chase Sabine — 2 posts for the week</div><span class="day-pill" style="background:#FAEEDA;color:#633806;">Mon</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Check Airtable — flag any empty next-week slots</div><span class="day-pill" style="background:#FAEEDA;color:#633806;">Mon</span></div></div>
+  </div>
+
+  <div class="n-h3">Tuesday</div>
+  <div style="border:1px solid var(--color-border-tertiary);border-radius:8px;padding:4px 12px;margin-bottom:.75rem;">
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Collect all 5 posts from Georgina + Sabine into Airtable</div><span class="day-pill" style="background:#F1EFE8;color:#444441;">Tue</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Present Georgina's posts to Sabine for approval</div><span class="day-pill" style="background:#F1EFE8;color:#444441;">Tue</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Remind Sabine to review upcoming Beehive emails</div><span class="day-pill" style="background:#F1EFE8;color:#444441;">Tue</span></div></div>
+  </div>
+
+  <div class="n-h3">Wednesday</div>
+  <div style="border:1px solid var(--color-border-tertiary);border-radius:8px;padding:4px 12px;margin-bottom:.75rem;">
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Schedule all 5 posts across the week (once Sabine approves)</div><span class="day-pill" style="background:#F1EFE8;color:#444441;">Wed</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Publish weekly article to LinkedIn Articles</div><span class="day-pill" style="background:#F1EFE8;color:#444441;">Wed</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Update this dashboard with schedule status</div><span class="day-pill" style="background:#F1EFE8;color:#444441;">Wed</span></div></div>
+  </div>
+
+  <div class="n-h3">Thursday – Friday</div>
+  <div style="border:1px solid var(--color-border-tertiary);border-radius:8px;padding:4px 12px;margin-bottom:.75rem;">
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Check 24hr impressions on Georgina's posts</div><span class="day-pill" style="background:#EEEDFE;color:#3C3489;">Thu</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Boost top 2 Georgina posts — $20 each over 2 days</div><span class="day-pill" style="background:#EEEDFE;color:#3C3489;">Thu–Fri</span></div></div>
+    <div class="check-item"><div class="checkbox"></div><div><div class="check-text">Fill in Bon's Friday update below + send snapshot to Sabine</div><span class="day-pill" style="background:#EEEDFE;color:#3C3489;">Fri EOD</span></div></div>
+  </div>
+
+  <div class="n-h2">💬 Bon's Friday update</div>
+  <div class="update-block">
+    <div class="ub-row"><span class="ub-label">Done this week:</span><span class="ub-val">[Bon fills in]</span></div>
+    <div class="ub-row"><span class="ub-label">In progress:</span><span class="ub-val">[Bon fills in]</span></div>
+    <div class="ub-row"><span class="ub-label">Needs Sabine:</span><span class="ub-val">[decisions or approvals required]</span></div>
+    <div class="ub-row"><span class="ub-label">Flags:</span><span class="ub-val">[posts that over or underperformed]</span></div>
+    <div class="ub-row"><span class="ub-label">Next week focus:</span><span class="ub-val">[Bon fills in]</span></div>
+  </div>
+
+  <div class="n-h2">💰 Ad spend tracker</div>
+  <table class="n-table">
+    <thead><tr><th>Week</th><th>Posts boosted</th><th>Spend</th><th>Budget left</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>19 May</td><td>—</td><td>$0</td><td>$40</td><td>—</td></tr>
+      <tr><td>26 May</td><td>—</td><td>$0</td><td>$40</td><td>—</td></tr>
+      <tr><td>2 Jun</td><td>—</td><td>$0</td><td>$40</td><td>—</td></tr>
+      <tr><td>9 Jun</td><td>—</td><td>$0</td><td>$40</td><td>—</td></tr>
+      <tr><td>16 Jun</td><td>—</td><td>$0</td><td>$40</td><td>—</td></tr>
+      <tr><td>23 Jun</td><td>—</td><td>$0</td><td>$40</td><td>—</td></tr>
+      <tr style="font-weight:600;"><td>Total</td><td>—</td><td>$0</td><td>$240 remaining</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="n-h2">📚 Resource hub</div>
+  <table class="n-table">
+    <thead><tr><th>Resource</th><th>Saved by</th><th>Date</th><th>Category</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>LinkedIn in 2026 — Alicia Teltz webinar</td><td>Davey / Bon</td><td>May 2026</td><td><span class="n-tag t-blue">LinkedIn</span></td><td style="color:#1D9E75;font-weight:600;">Saved</td></tr>
+      <tr><td>Substack algorithm research (2025–26)</td><td>Bon</td><td>May 2026</td><td><span class="n-tag t-purple">Substack</span></td><td style="color:#1D9E75;font-weight:600;">Saved</td></tr>
+      <tr><td>CEO dashboard research</td><td>Bon</td><td>May 2026</td><td><span class="n-tag t-gray">Operations</span></td><td style="color:#1D9E75;font-weight:600;">Saved</td></tr>
+      <tr><td>Devi's resources</td><td>Devi</td><td>—</td><td>—</td><td style="color:#BA7517;font-weight:600;">Pending</td></tr>
+    </tbody>
+  </table>
+
+  <div class="n-h2">🔍 LinkedIn profile health check</div>
+  <div class="n-callout callout-blue">
+    <span class="callout-icon">💡</span>
+    <span style="font-size:13px;">Based on Alicia Teltz webinar (May 2026). Bon checks this monthly and flags any misalignment.</span>
+  </div>
+  <table class="n-table">
+    <thead><tr><th>Signal</th><th>Status</th><th>Last checked</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>Top 5 skills match posting topics</td><td><span class="n-tag t-amber">Check</span></td><td>—</td><td>Update skills to match persona</td></tr>
+      <tr><td>Headline matches target ICP</td><td><span class="n-tag t-amber">Check</span></td><td>—</td><td>Confirm reflects audience</td></tr>
+      <tr><td>About section aligned with content</td><td><span class="n-tag t-amber">Check</span></td><td>—</td><td>Review quarterly</td></tr>
+      <tr><td>Featured section up to date</td><td><span class="n-tag t-amber">Check</span></td><td>—</td><td>Update after new articles</td></tr>
+      <tr><td>ICP profile views trending up</td><td><span class="n-tag t-gray">Monitor</span></td><td>—</td><td>Track weekly in snapshot</td></tr>
+    </tbody>
+  </table>
+
+  <div class="n-h2" style="margin-top:1.5rem;">ℹ️ How this dashboard works</div>
+  <div class="n-callout" style="background:#EEEDFE;border:1px solid #AFA9EC;">
+    <span class="callout-icon">🤖</span>
+    <div style="font-size:13.5px;color:#3C3489;line-height:1.7;">
+      <strong>Bon's job:</strong> Update this every Monday morning before Sabine's week begins.<br>
+      <strong>Sabine's job:</strong> Open this one page. Read in 5 minutes. Everything is here.<br>
+      <strong>Rule:</strong> If something needs Sabine's input or decision → it goes in the ⚠️ alert callout at the top.<br>
+      <strong>Goal:</strong> No searching Slack. No chasing links. No reactive scrambling. Bon drives this proactively.
+    </div>
+  </div>
+
+</div>
